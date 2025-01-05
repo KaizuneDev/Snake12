@@ -22,7 +22,6 @@ context = board.getContext("2d");
   
     var trail = [];
     var tail = INITIAL_TAIL;
-  
     var reward = 0;
     var points = 0;
     var pointsMax = 0;
@@ -186,10 +185,8 @@ context = board.getContext("2d");
             return false;
           })());
         }
-  
-        ctx.fillStyle = 'red';
+        ctx.fillStyle = 'blue';
         ctx.fillRect(fruit.x * gridSize+1, fruit.y * gridSize+1, gridSize-2, gridSize-2);
-  
         if(stopped) {
           ctx.fillStyle = 'rgba(250,250,250,0.8)';
           ctx.font = "small-caps bold 14px Helvetica";

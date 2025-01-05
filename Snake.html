@@ -27,7 +27,7 @@ var context = canvas.getContext('2d');
 
 var grid = 16;
 var count = 0;
-  
+// var powerup = { x: 5, y: 2};
 var snake = {
   x: 160,
   y: 160,
@@ -40,7 +40,7 @@ var snake = {
   cells: [],
   
   // length of the snake. grows when eating an apple
-  maxCells: 4
+  maxCells: 3
 };
 var apple = {
   x: 320,
@@ -93,6 +93,9 @@ function loop() {
     snake.cells.pop();
   }
 
+  // draw Powerups
+  // context.fillStyle = 'yellow';
+  // context.fillRect(powerup.x, powerup.y, grid-1, grid-1);
   // draw apple
   context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
@@ -108,14 +111,13 @@ function loop() {
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
 
-      // canvas is 400x400 which is 25x25 grids 
-      apple.x = getRandomInt(0, 25) * grid;
-      apple.y = getRandomInt(0, 25) * grid;
+      // canvas is 400x400 which is 24x24 grids 
+      apple.x = getRandomInt(0, 24) * grid;
+      apple.y = getRandomInt(0, 24) * grid;
     }
 
     // check collision with all cells after this one (modified bubble sort)
     for (var i = index + 1; i < snake.cells.length; i++) {
-      
       // snake occupies same space as a body part. reset game
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
         snake.x = 160;
@@ -125,8 +127,8 @@ function loop() {
         snake.dx = grid;
         snake.dy = 0;
 
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
+        apple.x = getRandomInt(0, 24) * grid;
+        apple.y = getRandomInt(0, 24) * grid;
       }
     }
   });
@@ -164,5 +166,6 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
+<script src="game.js"></script>
 </body>
 </html>
