@@ -1,6 +1,6 @@
 var Snake = (function () {
 
-board = document.getElementById("board");
+board = document.getElementById("game");
 context = board.getContext("2d");
 
     const INITIAL_TAIL = 4; 
@@ -202,7 +202,13 @@ context = board.getContext("2d");
         return reward;
       }
     }
-  
+
+    // TODO: Adding Report Bug 
+    // function reportPlayerBug() { 
+    //  document.addEventListener('keydown', (e) =>{
+    //   window.print("Report");
+    //  });
+    // }
     function keyPush (evt) {
       switch(evt.keyCode) {
         case 37: //left

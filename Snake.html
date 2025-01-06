@@ -34,7 +34,6 @@ var snake = {
   // snake velocity. moves one grid length every frame in either the x or y direction
   dx: grid,
   dy: 0,
-  
   // keep track of all grids the snake body occupies
   cells: [],
   
@@ -141,7 +140,7 @@ document.addEventListener('keydown', function(e) {
   // not already moving on the same axis (pressing left while moving
   // left won't do anything, and pressing right while moving left
   // shouldn't let you collide with your own body)
-  
+
   // left arrow key
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;
