@@ -40,7 +40,7 @@ var snake = {
   cells: [],
   
   // length of the snake. grows when eating an apple
-  maxCells: 3
+  maxCells: 5
 };
 var apple = {
   x: 320,
@@ -127,6 +127,8 @@ function loop() {
         snake.dx = grid;
         snake.dy = 0;
 
+
+        // set Random Apple Spawn Random. 0/24 Only Touched 
         apple.x = getRandomInt(0, 24) * grid;
         apple.y = getRandomInt(0, 24) * grid;
       }
