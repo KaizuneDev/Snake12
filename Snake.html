@@ -7,7 +7,6 @@
     height: 100%;
     margin: 0;
   }
-
   body {
     background: black;
     display: flex;
@@ -15,12 +14,12 @@
     justify-content: center;
   }
   canvas {
-    border: 100px solid rgb(60, 211, 231);
+    border: 100px solid rgb(11, 227, 255);
   }
   </style>
 </head>
 <body>
-<canvas width="920" height="500" id="game"></canvas>
+<canvas width="920" height="512" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -43,8 +42,8 @@ var snake = {
   maxCells: 5
 };
 var apple = {
-  x: 320,
-  y: 320
+  x: 315,
+  y: 315
 };
 
 // get random whole numbers in a specific range
