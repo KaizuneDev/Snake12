@@ -1,5 +1,5 @@
 # Snake12 For PC
-Creato con HTML CSS JAVASCRIPT
+Created With HTML CSS JAVASCRIPT
 
 # Update 
 2.0 (01-03-2025)
