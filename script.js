@@ -1,91 +1,78 @@
-const gameBoard = document.getElementById('game-board');
-const scoreElement = document.getElementById('score');
-const boardSize = 300;  // dimensione del gioco
-const unitSize = 10;  // dimensione di ogni unità
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-let snake = [{ x: 150, y: 150 }];
-let direction = { x: 10, y: 0 };
-let food = generateFood();
+const gridSize = 20;
+const tileCount = canvas.width / gridSize;
+
+let snake = [{ x: 10, y: 10 }];
+let direction = { x: 0, y: 0 };
+let food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
 let score = 0;
-let gameInterval;
 
-function createSnake() {
-    gameBoard.innerHTML = ''; // Pulisce la board
-    snake.forEach(segment => {
-        const snakeSegment = document.createElement('div');
-        snakeSegment.classList.add('snake');
-        snakeSegment.style.width = unitSize + 'px';
-        snakeSegment.style.height = unitSize + 'px';
-        snakeSegment.style.left = segment.x + 'px';
-        snakeSegment.style.top = segment.y + 'px';
-        gameBoard.appendChild(snakeSegment);
-    });
+function gameLoop() {
+    update();
+    draw();
+    setTimeout(gameLoop, 100);
 }
 
-function generateFood() {
-    const x = Math.floor(Math.random() * (boardSize / unitSize)) * unitSize;
-    const y = Math.floor(Math.random() * (boardSize / unitSize)) * unitSize;
-    return { x, y };
-}
-
-function createFood() {
-    const foodElement = document.createElement('div');
-    foodElement.classList.add('food');
-    foodElement.style.width = unitSize + 'px';
-    foodElement.style.height = unitSize + 'px';
-    foodElement.style.left = food.x + 'px';
-    foodElement.style.top = food.y + 'px';
-    gameBoard.appendChild(foodElement);
-}
-
-function moveSnake() {
+function update() {
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
-    
-    if (head.x >= boardSize) head.x = 0;
-    if (head.y >= boardSize) head.y = 0;
-    if (head.x < 0) head.x = boardSize - unitSize;
-    if (head.y < 0) head.y = boardSize - unitSize;
+
+    // Controlla collisioni con i bordi
+    if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+        resetGame();
+        return;
+    }
+
+    // Controlla collisioni con il corpo
+    if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        resetGame();
+        return;
+    }
 
     snake.unshift(head);
 
+    // Controlla se il serpente mangia il cibo
     if (head.x === food.x && head.y === food.y) {
         score++;
-        food = generateFood();
-        createFood();
+        food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
     } else {
         snake.pop();
     }
-
-    createSnake();
-    scoreElement.textContent = score;
 }
 
-function changeDirection(event) {
-    switch (event.key) {
+function draw() {
+    // Sfondo
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Serpente
+    ctx.fillStyle = '#00ff00';
+    snake.forEach(segment => ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize));
+
+    // Cibo
+    ctx.fillStyle = '#ff0000';
+    ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+    // Punteggio
+    ctx.fillStyle = '#fff';
+    ctx.font = '20px "Press Start 2P"';
+    ctx.fillText(`Score: ${score}`, 10, 30);
+}
+
+function resetGame() {
+    snake = [{ x: 10, y: 10 }];
+    direction = { x: 0, y: 0 };
+    score = 0;
+    food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
+}
+
+window.addEventListener('keydown', e => {
+    switch (e.key) {
         case 'ArrowUp':
-            if (direction.y === 0) direction = { x: 0, y: -unitSize };
+            if (direction.y === 0) direction = { x: 0, y: -1 };
             break;
         case 'ArrowDown':
-            if (direction.y === 0) direction = { x: 0, y: unitSize };
+            if (direction.y === 0) direction = { x: 0, y: 1 };
             break;
-        case 'ArrowLeft':
-            if (direction.x === 0) direction = { x: -unitSize, y: 0 };
-            break;
-        case 'ArrowRight':
-            if (direction.x === 0) direction = { x: unitSize, y: 0 };
-            break;
-    }
-}
-
-function startGame() {
-    gameInterval = setInterval(() => {
-        moveSnake();
-    }, 100);
-}
-
-function stopGame() {
-    clearInterval(gameInterval);
-}
-
-document.addEventListener('keydown', changeDirection);
-startGame();
+        case 'Arrow
