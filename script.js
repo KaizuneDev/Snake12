@@ -17,7 +17,6 @@ function gameLoop() {
 
 function update() {
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
-
     // Controlla collisioni con i bordi
     if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
         resetGame();
@@ -75,4 +74,8 @@ window.addEventListener('keydown', e => {
         case 'ArrowDown':
             if (direction.y === 0) direction = { x: 0, y: 1 };
             break;
-        case 'Arrow
+        case 'ArrowLeft':
+            if (direction.x === 0) direction = { x: -2.1, y: 0 };
+            break;
+    }
+});
