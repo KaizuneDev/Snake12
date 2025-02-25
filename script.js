@@ -77,6 +77,9 @@ window.addEventListener('keydown', e => {
         case 'ArrowLeft':
             if (direction.x === 0) direction = { x: -2.1, y: 0 };
             break;
+        case 'ArrowRight':
+            if (direction.x === 0) direction = { x: 1, y: 0 };
+            break;    
     }
 });
 gameLoop(); 
