@@ -8,11 +8,15 @@ let snake = [{ x: 10, y: 10 }];
 let direction = { x: 0, y: 0 };
 let food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
 let score = 0;
-
+let current_state = Object.freeze({
+  GHOST: "Ghost",
+  MURDER: "Murder"
+});
 function gameLoop() {
     update();
     draw();
     setTimeout(gameLoop, 100);
+    
 }
 
 function update() {
@@ -52,7 +56,6 @@ function draw() {
     // Cibo
     ctx.fillStyle = '#ff0000';
     ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
-
     // Punteggio
     ctx.fillStyle = '#fff';
     ctx.font = '20px "Press Start 2P"';
@@ -81,5 +84,6 @@ window.addEventListener('keydown', e => {
             if (direction.x === 0) direction = { x: 1, y: 0 };
             break;    
     }
+    
 });
 gameLoop(); 
