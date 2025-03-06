@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const gridSize = 21;
+const gridSize = 22;
 const tileCount = canvas.width / gridSize;
 
 let snake = [{ x: 10, y: 10 }];
@@ -9,9 +9,12 @@ let direction = { x: 0, y: 0 };
 let food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
 let score = 0;
 let current_state = Object.freeze({
+  NORMAL: snake.fillStyle = "00ff00",
   GHOST: "Ghost",
-  MURDER: "Murder"
+  MURDER: "Murder",
+  FASTER: "Faster"
 });
+
 function gameLoop() {
     update();
     draw();
@@ -34,7 +37,7 @@ function update() {
     }
 
     snake.unshift(head);
-
+    snake.current_state.NORMAL;
     // Controlla se il serpente mangia il cibo
     if (head.x === food.x && head.y === food.y) {
         score++;
@@ -86,19 +89,19 @@ window.addEventListener('keydown', e => {
         case 'W':
           if (direction === 0)
           direction = {x:0, y:-1};
-          break
+          break;
         case 'A':
           if (direction === 0)
           direction = { x: -2.1, y: 0 };
-          break
+          break;
         case 'S':
           if (direction === 0)
           direction = { x: 0, y: 1 };
-          break
+          break;
         case 'D':
           if (direction === 0)
           direction = { x: 1, y: 0 };
-          break
+          break;
     }
     
 });
