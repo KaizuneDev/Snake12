@@ -55,13 +55,14 @@ header h1 {
 
 .download-link:hover {
   background-color: #7a7a7a;
-  animation: Rotate 2s infinite linear;
+  animation: Rotate 1s infinite linear;
 }
 
 /* Footer */
 footer {
   margin-top: 39px;
 }
+
 
 footer p {
   color: #b0b0b0;

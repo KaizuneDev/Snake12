@@ -75,33 +75,26 @@ function resetGame() {
 window.addEventListener('keydown', e => {
     switch (e.key) {
         case 'ArrowUp':
+        case 'w':
+        case 'W':
             if (direction.y === 0) direction = { x: 0, y: -1 };
             break;
         case 'ArrowDown':
+        case 's':
+        case 'S':
             if (direction.y === 0) direction = { x: 0, y: 1 };
             break;
         case 'ArrowLeft':
-            if (direction.x === 0) direction = { x: -2.1, y: 0 };
+        case 'a':
+        case 'A':
+            if (direction.x === 0) direction = { x: -0.99, y: 0 };
             break;
         case 'ArrowRight':
+          case 'd':
+          case 'D':
             if (direction.x === 0) direction = { x: 1, y: 0 };
             break;
-        case 'W':
-          if (direction === 0)
-          direction = {x:0, y:-1};
-          break;
-        case 'A':
-          if (direction === 0)
-          direction = { x: -2.1, y: 0 };
-          break;
-        case 'S':
-          if (direction === 0)
-          direction = { x: 0, y: 1 };
-          break;
-        case 'D':
-          if (direction === 0)
-          direction = { x: 1, y: 0 };
-          break;
+        
     }
     
 });
