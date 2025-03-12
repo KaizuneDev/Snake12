@@ -46,8 +46,8 @@ function update() {
         snake.pop();
     }
     // Check if snake is not touch apple
-    if (!head.x === food.x && head.y === food.y){
-      score = 0 
+    if (!head.x !== food.x || head.y !== food.y){
+      score = 0;
       food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
     }
 }
