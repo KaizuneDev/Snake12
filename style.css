@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #282c34;
+    background-color: #282C34;
     color: #fff;
     font-family: 'Press Start 2P', cursive;
 }
@@ -14,15 +14,29 @@ body {
 }
 
 canvas {
-    border: 2.1px solid #fff;
+    border: 2px solid #fff;
     background-color: #000;
 }
 
 h1 {
     margin-bottom: 20px;
+    animation:Typing 3s steps(22, end) forwards, blink 1s infinite;
 }
 
 p {
     margin-top: 20px;
     font-size: 12px;
+}
+@keyframes Typing {
+  from {
+    width:0;
+  }
+  to {
+    width: 22ch;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color:transparent;
+  }
 }

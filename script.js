@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const gridSize = 22;
+const gridSize = 29;
 const tileCount = canvas.width / gridSize;
 
 let snake = [{ x: 10, y: 10 }];
@@ -49,8 +49,9 @@ function update() {
     if (!head.x !== food.x || head.y !== food.y){
       score = 0;
       food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
+  m
     }
-}
+} 
 
 function draw() {
     // Sfondo
@@ -80,23 +81,15 @@ function resetGame() {
 window.addEventListener('keydown', e => {
     switch (e.key) {
         case 'ArrowUp':
-        case 'w':
-        case 'W':
             if (direction.y === 0) direction = { x: 0, y: -1 };
             break;
         case 'ArrowDown':
-        case 's':
-        case 'S':
             if (direction.y === 0) direction = { x: 0, y: 1 };
             break;
         case 'ArrowLeft':
-        case 'a':
-        case 'A':
             if (direction.x === 0) direction = { x: -0.99, y: 0 };
             break;
         case 'ArrowRight':
-          case 'd':
-          case 'D':
             if (direction.x === 0) direction = { x: 1, y: 0 };
             break;
         

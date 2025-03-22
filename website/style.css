@@ -55,7 +55,7 @@ header h1 {
 
 .download-link:hover {
   background-color: #7a7a7a;
-  animation: Rotate 1s infinite linear;
+  animation: Scale 1s infinite linear;
 }
 
 /* Footer */
@@ -80,11 +80,11 @@ footer p {
 .social-links a:hover {
   color: #808080;
 }
-@keyframes Rotate {
+@keyframes Scale {
   0% {
-    transform: rotate(0deg);
+    transform: s scaleX(2.5);
   }
   100% {
-    transform: rotate(30deg);
+    transform: scaleX(1.33);
   }
 }
