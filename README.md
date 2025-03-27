@@ -1,4 +1,4 @@
-# Snake12 For PC
+# Snake12
 Created with HTML CSS JAVASCRIPT
 
 # Update
@@ -7,4 +7,5 @@ Created with HTML CSS JAVASCRIPT
 # Devices Supported
 * Mobile
 * Desktop
+* PSP (Playstation Portable)
 
