@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const gridSize = 29;
+const gridSize = 32;
 const tileCount = canvas.width / gridSize;
 
 let snake = [{ x: 10, y: 10 }];
@@ -37,7 +37,6 @@ function update() {
     }
 
     snake.unshift(head);
-    snake.current_state.NORMAL;
     // Controlla se il serpente mangia il cibo
     if (head.x === food.x && head.y === food.y) {
         score++;
