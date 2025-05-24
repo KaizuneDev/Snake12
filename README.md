@@ -7,5 +7,4 @@ Created with HTML CSS JAVASCRIPT
 # Devices Supported
 * Mobile
 * Desktop
-* PSP (Playstation Portable)
 
